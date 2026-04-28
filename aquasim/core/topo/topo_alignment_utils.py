@@ -52,6 +52,11 @@ def load_etopo1_grd(path: Path) -> RegularGridTopo:
     if fill is not None:
         elev = np.where(elev == float(fill), np.nan, elev)
 
+    # The ETOPO1 GDAL/GMT grid used by this project stores rows north-to-south
+    # even though y_range is reported as ascending. Flip the data so row order
+    # matches the ascending latitude axis constructed from y_range.
+    elev = elev[::-1, :]
+
     # Ensure ascending axes; most interpolation assumes monotonic ascending grids.
     if lat[0] > lat[-1]:
         lat = lat[::-1]

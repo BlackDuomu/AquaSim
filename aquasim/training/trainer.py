@@ -341,7 +341,7 @@ def main() -> None:
     train_raw, val_raw, test_raw = load_all_splits(args.data_dir)
     norm_stats_cache_path = args.norm_stats_cache if args.norm_stats_cache is not None else default_channel_norm_cache_path(args.data_dir)
     stats = load_or_compute_channel_norm_stats(
-        step5_dir=args.data_dir,
+        patch_dir=args.data_dir,
         train_split=train_raw,
         cache_path=norm_stats_cache_path,
         use_cache=not bool(args.no_norm_stats_cache),

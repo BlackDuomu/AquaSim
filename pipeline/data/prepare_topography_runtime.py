@@ -14,6 +14,7 @@ def main() -> None:
     p = argparse.ArgumentParser(description="Prepare AquaSim topography runtime arrays.")
     p.add_argument("--topo-file", type=Path, default=Path("data/topo/ETOPO1_Bed_g_gdal.grd"))
     p.add_argument("--unified-dir", type=Path, default=Path("data/processed/unified_field"))
+    p.add_argument("--step2-dir", type=Path, default=Path("data/processed/china_strict_patches"))
     p.add_argument("--patch-metadata", type=Path, default=Path("data/processed/china_strict_patches/patch_metadata.csv"))
     p.add_argument("--out-dir", type=Path, default=Path("data/processed/topo_runtime"))
     p.add_argument("--no-figures", action="store_true")
@@ -27,6 +28,7 @@ def main() -> None:
             "aquasim.core.topo.prepare_topo_features",
             "--topo-file", str(args.topo_file),
             "--unified-dir", str(args.unified_dir),
+            "--step2-dir", str(args.step2_dir),
             "--patch-metadata", str(args.patch_metadata),
             "--out-dir", str(args.out_dir),
         ]

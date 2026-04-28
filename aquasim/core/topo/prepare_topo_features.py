@@ -44,6 +44,8 @@ def parse_args() -> argparse.Namespace:
 
 
 def _load_yaml(path: Path) -> Dict[str, Any]:
+    if not path.exists():
+        return {}
     text = path.read_text(encoding="utf-8")
     try:
         import yaml  # type: ignore
