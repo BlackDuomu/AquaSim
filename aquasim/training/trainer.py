@@ -171,7 +171,10 @@ def _build_topo_weight_lookup(topo_csv: Optional[Path], near_coeff: float, slope
 def _weighted_topo_loss(pred: torch.Tensor, target: torch.Tensor, supervise: torch.Tensor, patch_ids: torch.Tensor, lookup: Dict[int, float]) -> torch.Tensor:
     if not lookup:
         return pred.sum() * 0.0
-    sq = ((pred - target) ** 2) * supervise
+    valid = (supervise > 0) & torch.isfinite(pred) & torch.isfinite(target)
+    diff = torch.where(valid, pred - target, torch.zeros_like(pred))
+    sq = diff * diff
+    supervise = valid.to(dtype=pred.dtype)
     per_patch_num = sq.sum(dim=(1, 2, 3, 4))
     per_patch_den = torch.clamp(supervise.sum(dim=(1, 2, 3, 4)), min=1.0)
     per_patch = per_patch_num / per_patch_den
