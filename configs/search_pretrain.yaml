@@ -1,0 +1,5 @@
+search:
+  entrypoint: pipeline/search/pretrain_optuna.py
+  source: E:/python/MarineSim/scripts/search_pretrain_optuna_downstream.py
+  best_trial: trial_0029
+  role: research_reproduction

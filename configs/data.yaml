@@ -1,0 +1,46 @@
+paths:
+  raw_dir: data/raw
+  topo_dir: data/topo
+  unified_dir: data/processed/unified_field
+  china_strict_patch_dir: data/processed/china_strict_patches
+  global_pretrain_patch_dir: data/processed/global_pretrain_patches
+  topo_runtime_dir: data/processed/topo_runtime
+
+china_strict_patch_params:
+  lat_min: 0
+  lat_max: 45
+  lon_min: 105
+  lon_max: 135
+  patch_depth: 24
+  patch_lat: 10
+  patch_lon: 10
+  stride_depth: 12
+  stride_lat: 1
+  stride_lon: 1
+  artificial_ratio: 0.4
+  seed: 42
+  min_ocean_cells_2d: 16
+  min_supervise_points: 40
+  train_ratio: 0.7
+  val_ratio: 0.15
+  block_lat: 15
+  block_lon: 15
+
+global_pretrain_patch_params:
+  exclude_china: true
+  china_lat_min: 0
+  china_lat_max: 45
+  china_lon_min: 105
+  china_lon_max: 135
+  patch_depth: 24
+  patch_lat: 10
+  patch_lon: 10
+  stride_depth: 12
+  stride_lat: 6
+  stride_lon: 6
+  artificial_ratio: 0.4
+  seed: 42
+  min_ocean_cells_2d: 16
+  min_supervise_points: 64
+  train_ratio: 0.8
+  val_ratio: 0.1

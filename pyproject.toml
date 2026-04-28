@@ -1,0 +1,17 @@
+﻿[project]
+name = "aquasim"
+version = "0.1.0"
+description = "AquaSim clean project for China coastal 3D ocean-field reconstruction"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "pandas",
+  "xarray",
+  "netcdf4",
+  "torch",
+  "matplotlib",
+  "pyyaml"
+]
+
+[tool.setuptools]
+py-modules = []

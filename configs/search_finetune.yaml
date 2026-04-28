@@ -1,0 +1,5 @@
+search:
+  entrypoint: pipeline/search/finetune_optuna.py
+  source: E:/python/MarineSim/scripts/search_finetune_optuna.py
+  best_trial: trial_0028
+  role: research_reproduction

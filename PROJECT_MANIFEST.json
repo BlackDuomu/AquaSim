@@ -1,0 +1,36 @@
+{
+  "project_name": "AquaSim",
+  "source_project": "E:/python/MarineSim",
+  "created_at": "2026-04-27T00:00:00+08:00",
+  "final_model_dir": "outputs/train",
+  "final_config": "configs/train.yaml",
+  "data_dirs": {
+    "raw": "data/raw",
+    "topo": "data/topo",
+    "unified_field": "data/processed/unified_field",
+    "china_strict_patches": "data/processed/china_strict_patches",
+    "global_pretrain_patches": "data/processed/global_pretrain_patches",
+    "topo_runtime": "data/processed/topo_runtime",
+    "calibration": "data/processed/calibration"
+  },
+  "checkpoint_paths": {
+    "pretrain_best_model": "outputs/train/pretrain_best_model.pt",
+    "finetune_best_model": "outputs/train/checkpoints/best_model.pt",
+    "finetune_last_model": "outputs/train/checkpoints/last_model.pt"
+  },
+  "metric_summary": {
+    "objective": 0.03316874512456951,
+    "test_rmse": 0.11473642487466575,
+    "test_mae": 0.07867888937795894,
+    "near_bottom_rmse": 0.1092749935656131,
+    "slope_area_rmse": 0.11321877600181368,
+    "topo_consistency_score": 0.5077207916288763,
+    "topo_metric_fallback": false
+  },
+  "provenance": {
+    "best_pretrain_trial": "E:/python/MarineSim/outputs/final_hparam_search/pretrain_downstream_optuna/trials/trial_0029",
+    "best_finetune_trial": "E:/python/MarineSim/outputs/final_hparam_search/finetune_optuna/trials/trial_0028",
+    "note": "Current best under completed search budget; not a mathematical proof of global optimum."
+  },
+  "missing_files": []
+}

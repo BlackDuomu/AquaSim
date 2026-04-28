@@ -1,0 +1,59 @@
+model:
+  name: marine3d_transformer
+
+paths:
+  unified_dir: data/processed/unified_field
+  china_strict_patch_dir: data/processed/china_strict_patches
+  global_pretrain_patch_dir: data/processed/global_pretrain_patches
+  topo_runtime_dir: data/processed/topo_runtime
+  topo_metadata: data/processed/topo_runtime/patch_topo_metadata.csv
+  calibration_json: data/processed/calibration/physics_topo_loss_scales_china.json
+  pretrain_checkpoint: outputs/train/pretrain_best_model.pt
+  train_output_dir: outputs/train
+
+pretrain:
+  max_epochs: 180
+  batch_size: 8
+  lr: 0.004651368090377602
+  weight_decay: 0.00014733468288150573
+
+finetune:
+  max_epochs: 120
+  batch_size: 12
+  lr: 2.0805084264202466e-05
+  weight_decay: 0.00014189277631132947
+  early_stop_patience: 20
+  min_delta: 1e-5
+
+constraints:
+  use_physics_loss: true
+  use_topo_constraint: true
+  topo_aware: true
+  use_loss_calibration: true
+  lambda_density: 0.01512733041002596
+  lambda_vert: 0.000655552331151622
+  lambda_aou_o2: 2.4710592780647456e-07
+  lambda_np: 0.0
+  lambda_remin: 0.0
+  lambda_tv: 0.0012149185105664079
+  lambda_topo: 0.04149734431721462
+  topo_near_bottom_weight: 1.1074612052584936
+  topo_slope_weight: 0.7575076729791065
+  topo_flat_enhance_weight: 0.3314379454098823
+
+metrics:
+  objective: 0.03316874512456951
+  test_rmse: 0.11473642487466575
+  test_mae: 0.07867888937795894
+  near_bottom_rmse: 0.1092749935656131
+  slope_area_rmse: 0.11321877600181368
+  topo_consistency_score: 0.5077207916288763
+  topo_metric_fallback: false
+
+provenance:
+  source_project: E:/python/MarineSim
+  best_pretrain_trial: outputs/final_hparam_search/pretrain_downstream_optuna/trials/trial_0029
+  best_pretrain_checkpoint: E:/python/MarineSim/outputs/final_hparam_search/pretrain_downstream_optuna/trials/trial_0029/pretrain/checkpoints/best_model.pt
+  best_finetune_trial: outputs/final_hparam_search/finetune_optuna/trials/trial_0028
+  best_finetune_dir: E:/python/MarineSim/outputs/final_hparam_search/finetune_optuna/trials/trial_0028/finetune
+  note: "Current best under completed search budget; not a mathematical proof of global optimum."
